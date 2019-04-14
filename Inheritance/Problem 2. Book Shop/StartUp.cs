@@ -17,7 +17,6 @@ namespace Problem_2._Book_Shop
 
                 Console.WriteLine(book + Environment.NewLine);
                 Console.WriteLine(goldenEditionBook);
-                Console.WriteLine(book + Environment.NewLine);
             }
             catch (ArgumentException ae)
             {
