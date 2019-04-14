@@ -2,7 +2,7 @@
 
 namespace Problem_2._Book_Shop
 {
-    class Program
+    class StartUp
     {
         static void Main(string[] args)
         {
