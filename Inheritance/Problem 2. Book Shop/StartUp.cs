@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Problem_2._Book_Shop
+namespace Problem_2_Book_Shop
 {
     class StartUp
     {
@@ -15,7 +15,7 @@ namespace Problem_2._Book_Shop
                 Book book = new Book(author, title, price);
                 GoldenEditionBook goldenEditionBook = new GoldenEditionBook(author, title, price);
 
-                Console.WriteLine(book + Environment.NewLine);
+                Console.WriteLine(book);
                 Console.WriteLine(goldenEditionBook);
             }
             catch (ArgumentException ae)

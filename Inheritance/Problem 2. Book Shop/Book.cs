@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace Problem_2._Book_Shop
+namespace Problem_2_Book_Shop
 {
     public class Book
     {

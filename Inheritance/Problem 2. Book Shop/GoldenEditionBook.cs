@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Problem_2._Book_Shop
+namespace Problem_2_Book_Shop
 {
     class GoldenEditionBook : Book
     {
