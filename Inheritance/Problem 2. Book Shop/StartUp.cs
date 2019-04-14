@@ -20,7 +20,6 @@ namespace Problem_2_Book_Shop
             }
             catch (ArgumentException ae)
             {
-
                 Console.WriteLine(ae.Message);
             }
         }
