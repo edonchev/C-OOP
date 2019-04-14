@@ -4,9 +4,9 @@ namespace Problem_2._Book_Shop
 {
     class StartUp
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }
