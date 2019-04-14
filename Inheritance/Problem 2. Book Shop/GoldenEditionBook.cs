@@ -13,7 +13,7 @@ namespace Problem_2._Book_Shop
 
         public override decimal Price
         {
-            get => base.Price + (base.Price * (30 / 100));
+            get => base.Price * 1.3m;
         }
     }
 }

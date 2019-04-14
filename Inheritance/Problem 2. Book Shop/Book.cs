@@ -17,14 +17,14 @@ namespace Problem_2._Book_Shop
             Title = title;
             Price = price;
         }
-        //"Author not valid!"
+        
         public string Author
         {
             get
             {
                 return author;
             }
-            set
+            protected set
             {
                 string[] names = value.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 if (names.Length > 1)
@@ -44,7 +44,7 @@ namespace Problem_2._Book_Shop
             {
                 return title;
             }
-            set
+            protected set
             {
                 if (value.Length < 3)
                 {
@@ -53,14 +53,13 @@ namespace Problem_2._Book_Shop
                 title = value;
             }
         }
-        
         public virtual decimal Price
         {
             get
             {
                 return price;
             }
-            set
+            protected set
             {
                 if (value <= 0)
                 {
@@ -68,6 +67,16 @@ namespace Problem_2._Book_Shop
                 }
                 price = value;
             }
+        }
+
+        public override string ToString()
+        {
+            var resultBuilder = new StringBuilder();
+            resultBuilder.AppendLine($"Type: {this.GetType().Name}")
+                .AppendLine($"Title: {this.Title}")
+                .AppendLine($"Author: {this.Author}")
+                .AppendLine($"Price: {this.Price:F2}");
+            return resultBuilder.ToString();
         }
     }
 }
