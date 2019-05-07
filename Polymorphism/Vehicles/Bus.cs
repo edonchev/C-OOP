@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace Vehicles
+{
+    
+    public class Bus : Vehicle
+    {
+        internal static readonly double increasedFuelConsumption = 1.4;
+
+        public Bus(double fuelQuantity, double fuelConsumption, double tankCapacity) : base(fuelQuantity, fuelConsumption, tankCapacity)
+        {
+        }
+    }
+}

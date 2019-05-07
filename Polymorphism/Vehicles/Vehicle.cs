@@ -34,7 +34,7 @@ namespace Vehicles
         public double FuelConsumption { get; set; }
         public double TankCapacity { get; set; }
 
-        public virtual string  Drive(double distance)
+        public virtual string Drive(double distance)
         {
             double necessaryFuel = distance * FuelConsumption;
             if (FuelQuantity >= necessaryFuel)
@@ -48,9 +48,30 @@ namespace Vehicles
             }
         }
 
+        public virtual string Drive(double distance, double increasedFuelConsumption)
+        {
+            double necessaryFuel = distance * (FuelConsumption + increasedFuelConsumption);
+            if (FuelQuantity >= necessaryFuel)
+            {
+                FuelQuantity -= necessaryFuel;
+                return $"{GetType().Name} travelled {distance} km";
+            }
+            else
+            {
+                return $"{GetType().Name} needs refueling";
+            }
+        }
+
         public virtual void Refuel(double liters)
         {
-            FuelQuantity += liters;
+            if ((liters + FuelQuantity) > TankCapacity)
+            {
+                Console.WriteLine($"Cannot fit {liters} fuel in the tank");
+            }
+            else
+            {
+                FuelQuantity += liters;
+            }
         }
 
         public override string ToString()

@@ -5,7 +5,7 @@
         private static readonly double increasedFuelConsumption = 1.6;
         private static readonly double quantityLoss = 0.95;
 
-        public Truck(double fuelQuantity, double fuelConsumption) : base(fuelQuantity, fuelConsumption + increasedFuelConsumption)
+        public Truck(double fuelQuantity, double fuelConsumption, double tankCapacity) : base(fuelQuantity, fuelConsumption + increasedFuelConsumption, tankCapacity)
         {
         }
     
