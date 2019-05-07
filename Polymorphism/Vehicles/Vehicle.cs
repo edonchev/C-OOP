@@ -6,14 +6,33 @@ namespace Vehicles
 {
     public abstract class Vehicle
     {
-        public Vehicle(double fuelQuantity, double fuelConsumption)
+        public Vehicle(double fuelQuantity, double fuelConsumption, double tankCapacity)
         {
             FuelQuantity = fuelQuantity;
             FuelConsumption = fuelConsumption;
+            TankCapacity = tankCapacity;
         }
 
-        public double FuelQuantity { get; set; }
+        public double FuelQuantity
+        {
+            get
+            {
+                return FuelQuantity;
+            }
+            set
+            {
+                if (FuelQuantity > TankCapacity)
+                {
+                    FuelQuantity = 0;
+                }
+                else
+                {
+                    FuelQuantity = value;
+                }
+            }
+        }
         public double FuelConsumption { get; set; }
+        public double TankCapacity { get; set; }
 
         public virtual string  Drive(double distance)
         {
