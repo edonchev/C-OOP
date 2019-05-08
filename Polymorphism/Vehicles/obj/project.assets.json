@@ -682,11 +682,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "H:\\TEMP\\trunk\\Polymorphism\\Vehicles\\Vehicles.csproj",
+      "projectUniqueName": "H:\\VS_Projects\\trunk\\Polymorphism\\Vehicles\\Vehicles.csproj",
       "projectName": "Vehicles",
-      "projectPath": "H:\\TEMP\\trunk\\Polymorphism\\Vehicles\\Vehicles.csproj",
+      "projectPath": "H:\\VS_Projects\\trunk\\Polymorphism\\Vehicles\\Vehicles.csproj",
       "packagesPath": "C:\\Users\\bgdonce\\.nuget\\packages\\",
-      "outputPath": "H:\\TEMP\\trunk\\Polymorphism\\Vehicles\\obj\\",
+      "outputPath": "H:\\VS_Projects\\trunk\\Polymorphism\\Vehicles\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
