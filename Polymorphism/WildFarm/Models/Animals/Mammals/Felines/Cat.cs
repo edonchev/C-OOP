@@ -8,7 +8,8 @@ namespace WildFarm.Animals
 {
     public class Cat : Feline, IFood
     {
-        public Cat(string name, double weight, int foodEaten, string livingRegion, string breed) : base(name, weight, foodEaten, livingRegion, breed)
+        public Cat(string name, double weight, int foodEaten, string livingRegion, string breed) 
+            : base(name, weight, foodEaten, livingRegion, breed)
         {
         }
 

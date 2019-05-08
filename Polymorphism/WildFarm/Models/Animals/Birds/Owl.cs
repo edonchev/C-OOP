@@ -8,7 +8,8 @@ namespace WildFarm.Animals
 {
     public class Owl : Bird, IFood
     {
-        public Owl(string name, double weight, int foodEaten, double wingSize) : base(name, weight, foodEaten, wingSize)
+        public Owl(string name, double weight, int foodEaten, double wingSize) 
+            : base(name, weight, foodEaten, wingSize)
         {
         }
 

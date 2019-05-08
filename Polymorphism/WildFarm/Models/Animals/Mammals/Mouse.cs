@@ -8,7 +8,8 @@ namespace WildFarm.Animals
 {
     public class Mouse : Mammal, IFood
     {
-        public Mouse(string name, double weight, int foodEaten, string livingRegion) : base(name, weight, foodEaten, livingRegion)
+        public Mouse(string name, double weight, int foodEaten, string livingRegion) 
+            : base(name, weight, foodEaten, livingRegion)
         {
         }
 
