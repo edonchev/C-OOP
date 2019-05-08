@@ -21,6 +21,7 @@ namespace Vehicles
             }
             Console.WriteLine(car);
             Console.WriteLine(truck);
+            Console.WriteLine(bus);
         }
 
         private static void ExecuteAction(Car car, Truck truck, Bus bus, string action, string vehicleType, double argument)
@@ -50,19 +51,22 @@ namespace Vehicles
                 case "Refuel":
                     if (argument <= 0)
                     {
-                        throw new ArgumentOutOfRangeException("Fuel must be a positive number");
+                        Console.WriteLine("Fuel must be a positive number");
                     }
-                    if (vehicleType == "Car")
+                    else
                     {
-                        car.Refuel(argument);
-                    }
-                    else if (vehicleType == "Truck")
-                    {
-                        truck.Refuel(argument);
-                    }
-                    else if (vehicleType == "Bus")
-                    {
-                        bus.Refuel(argument);
+                        if (vehicleType == "Car")
+                        {
+                            car.Refuel(argument);
+                        }
+                        else if (vehicleType == "Truck")
+                        {
+                            truck.Refuel(argument);
+                        }
+                        else if (vehicleType == "Bus")
+                        {
+                            bus.Refuel(argument);
+                        }
                     }
                     break;
             }

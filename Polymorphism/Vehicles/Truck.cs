@@ -1,4 +1,6 @@
-﻿namespace Vehicles
+﻿using System;
+
+namespace Vehicles
 {
     internal class Truck : Vehicle
     {
@@ -11,7 +13,15 @@
     
         public override void Refuel(double liters)
         {
-            FuelQuantity += liters * quantityLoss;
+            
+            if ((liters + FuelQuantity) > TankCapacity)
+            {
+                Console.WriteLine($"Cannot fit {liters} fuel in the tank");
+            }
+            else
+            {
+                FuelQuantity += liters * quantityLoss;
+            }
         }
     }
 }

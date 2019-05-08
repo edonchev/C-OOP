@@ -8,29 +8,12 @@ namespace Vehicles
     {
         public Vehicle(double fuelQuantity, double fuelConsumption, double tankCapacity)
         {
-            FuelQuantity = fuelQuantity;
+            FuelQuantity = fuelQuantity > tankCapacity ? 0 : fuelQuantity;
             FuelConsumption = fuelConsumption;
             TankCapacity = tankCapacity;
         }
 
-        public double FuelQuantity
-        {
-            get
-            {
-                return FuelQuantity;
-            }
-            set
-            {
-                if (FuelQuantity > TankCapacity)
-                {
-                    FuelQuantity = 0;
-                }
-                else
-                {
-                    FuelQuantity = value;
-                }
-            }
-        }
+        public double FuelQuantity { get; set; }
         public double FuelConsumption { get; set; }
         public double TankCapacity { get; set; }
 
