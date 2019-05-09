@@ -2,25 +2,31 @@
 using System.Collections.Generic;
 using System.Text;
 using WildFarm.Foods;
-using WildFarm.Interfaces;
 
 namespace WildFarm.Animals
 {
-    public class Mouse : Mammal, IFood
+    public class Mouse : Mammal
     {
-        public Mouse(string name, double weight, int foodEaten, string livingRegion) 
-            : base(name, weight, foodEaten, livingRegion)
+        private static double GainValue = 0.1;
+
+        public Mouse(string name, double weight, string livingRegion) 
+            : base(name, weight, livingRegion)
         {
         }
 
-        public void AskForFood()
+        public override void AskForFood()
         {
             Console.WriteLine("Squeak");
         }
 
-        public void Eat(Food food)
+        public override void Eat(Food food)
         {
-            throw new NotImplementedException();
+            BaseEat(food, new List<string> { nameof(Fruit), nameof(Vegetable) }, GainValue);
         }
+
+        //public override string ToString()
+        //{
+        //    return $"{this.GetType().Name} [{this.Name}, {this.Weight}, {this.LivingRegion}, {this.FoodEaten}]";
+        //}
     }
 }

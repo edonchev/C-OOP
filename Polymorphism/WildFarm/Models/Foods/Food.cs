@@ -10,6 +10,6 @@ namespace WildFarm.Foods
         {
             Quantity = quantity;
         }
-        public int Quantity { get; set; }
+        public int Quantity { get; protected set; }
     }
 }

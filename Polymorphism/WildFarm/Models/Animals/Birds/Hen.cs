@@ -1,24 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
 using WildFarm.Foods;
-using WildFarm.Interfaces;
 
 namespace WildFarm.Animals
 {
-    public class Hen : Bird, IFood
+    public class Hen : Bird
     {
-        public Hen(string name, double weight, int foodEaten, double wingSize) 
-            : base(name, weight, foodEaten, wingSize)
+        private static double GainValue = 0.35;
+        public Hen(string name, double weight, double wingSize) 
+            : base(name, weight, wingSize)
         {
         }
-
-        public void AskForFood()
+  
+        public override void AskForFood()
         {
             Console.WriteLine("Cluck");
         }
 
-        public void Eat(Food food)
+        public override void Eat(Food food)
         {
-            throw new NotImplementedException();
+            BaseEat(food, new List<string> { nameof(Fruit), nameof(Meat), nameof(Seeds), nameof(Vegetable) }, GainValue);
         }
     }
 }

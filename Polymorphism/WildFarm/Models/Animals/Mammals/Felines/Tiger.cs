@@ -1,26 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using WildFarm.Interfaces;
 using WildFarm.Foods;
 
 namespace WildFarm.Animals
 {
-    public class Tiger : Feline, IFood
+    public class Tiger : Feline
     {
-        public Tiger(string name, double weight, int foodEaten, string livingRegion, string breed) 
-            : base(name, weight, foodEaten, livingRegion, breed)
+        private static double GainValue = 1;
+
+        public Tiger(string name, double weight, string livingRegion, string breed) 
+            : base(name, weight, livingRegion, breed)
         {
         }
 
-        public void AskForFood()
+        public override void AskForFood()
         {
             Console.WriteLine("ROAR!!!");
         }
 
-        public void Eat(Food food)
+        public override void Eat(Food food)
         {
-            throw new NotImplementedException();
+            BaseEat(food, new List<string> { nameof(Meat) }, GainValue);
         }
     }
 }
