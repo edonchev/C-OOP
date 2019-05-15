@@ -1,8 +1,5 @@
 ﻿using DemoLogger.Loggers.Contracts;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace DemoLogger.Loggers
 {

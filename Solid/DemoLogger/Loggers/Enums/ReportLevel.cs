@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DemoLogger.Loggers.Enums
+﻿namespace DemoLogger.Loggers.Enums
 {
     public enum ReportLevel
     {

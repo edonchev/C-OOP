@@ -1,10 +1,6 @@
-﻿using DemoLogger.Appenders;
-using DemoLogger.Appenders.Contracts;
+﻿using DemoLogger.Appenders.Contracts;
 using DemoLogger.Loggers.Contracts;
 using DemoLogger.Loggers.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DemoLogger.Loggers
 {

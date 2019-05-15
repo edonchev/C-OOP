@@ -2,8 +2,6 @@
 using DemoLogger.Layouts.Contracts;
 using DemoLogger.Loggers.Enums;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DemoLogger.Appenders
 {

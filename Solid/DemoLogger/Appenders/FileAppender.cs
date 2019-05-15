@@ -3,9 +3,7 @@ using DemoLogger.Layouts.Contracts;
 using DemoLogger.Loggers.Contracts;
 using DemoLogger.Loggers.Enums;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace DemoLogger.Appenders
 {

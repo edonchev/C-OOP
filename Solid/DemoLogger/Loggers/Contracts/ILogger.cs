@@ -1,9 +1,4 @@
-﻿using DemoLogger.Loggers.Enums;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DemoLogger.Loggers.Contracts
+﻿namespace DemoLogger.Loggers.Contracts
 {
     public interface ILogger
     {

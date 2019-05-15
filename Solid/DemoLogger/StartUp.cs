@@ -1,11 +1,8 @@
 ﻿namespace DemoLogger
 {
     using DemoLogger.Appenders;
-    using DemoLogger.Appenders.Contracts;
     using DemoLogger.Layouts;
-    using DemoLogger.Layouts.Contracts;
     using DemoLogger.Loggers;
-    using DemoLogger.Loggers.Contracts;
     using DemoLogger.Loggers.Enums;
 
     public class StartUp
