@@ -22,27 +22,27 @@ namespace DemoLogger.Loggers
 
         public void Info(string dateTime, string infoMessage)
         {
-            Append(dateTime, ReportLevel.Info, infoMessage);
+            Append(dateTime, ReportLevel.INFO, infoMessage);
         }
 
         public void Warning(string dateTime, string warningMessage)
         {
-            Append(dateTime, ReportLevel.Warning, warningMessage);
+            Append(dateTime, ReportLevel.WARNING, warningMessage);
         }
 
         public void Error(string dateTime, string errorMessage)
         {
-            Append(dateTime, ReportLevel.Error, errorMessage);
+            Append(dateTime, ReportLevel.ERROR, errorMessage);
         }
 
         public void Critical(string dateTime, string criticalMessage)
         {
-            Append(dateTime, ReportLevel.Critical, criticalMessage);
+            Append(dateTime, ReportLevel.CRITICAL, criticalMessage);
         }
 
         public void Fatal(string dateTime, string fatalMessage)
         {
-            Append(dateTime, ReportLevel.Fatal, fatalMessage);
+            Append(dateTime, ReportLevel.FATAL, fatalMessage);
         }
 
         private void Append(string dateTime, ReportLevel type, string message)

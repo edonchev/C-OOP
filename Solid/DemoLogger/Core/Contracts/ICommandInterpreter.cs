@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DemoLogger.Core.Contracts
+﻿namespace DemoLogger.Core.Contracts
 {
-    interface ICommandInterpreter
+    public interface ICommandInterpreter
     {
+        void AddAppender(string[] args);
+        void AddMessage(string[] args);
+        void PrintInfo();
     }
 }

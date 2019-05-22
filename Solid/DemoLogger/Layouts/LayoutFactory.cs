@@ -13,8 +13,10 @@ namespace DemoLogger.Layouts
             {
                 case "SimpleLayout":
                     return new SimpleLayout();
+                case "XmlLayout":
+                    return new XmlLayout();
                 default:
-                    break;
+                    throw new ArgumentException("Invalid layout type");
             }
         }
     }

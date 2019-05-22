@@ -3,10 +3,10 @@ using DemoLogger.Appenders.Contracts;
 using DemoLogger.Core.Contracts;
 using DemoLogger.Layouts;
 using DemoLogger.Layouts.Contracts;
+using DemoLogger.Loggers;
 using DemoLogger.Loggers.Enums;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DemoLogger.Core
 {
@@ -27,27 +27,37 @@ namespace DemoLogger.Core
         {
             string appenderType = args[0];
             string layoutType = args[1];
-            ReportLevel reportLevel = ReportLevel.Info; //Sets the report level to the lowest value in order to log all messages in case of no reportLevel given
+            ReportLevel reportLevel = ReportLevel.INFO; //Sets the report level to the lowest value in order to log all messages in case of no reportLevel given
 
             if (args.Length > 2)
             {
-                reportLevel = Enum.Parse<ReportLevel>(args[2]);
+                reportLevel = Enum.Parse<ReportLevel>(args[2]); //Sets the report level to the given ReportLevel
             }
-            //Create an istance of an Appender for the given appenderType
-            //Create an instance of a Layout for the given layout type
-
-            appenderFactory.CreateAppender(appenderType, );
-            //Add this instance to the list of appenders
+            
+            var layout = layoutFactory.CreateLayout(layoutType);
+            var appender = appenderFactory.CreateAppender(appenderType, layout);
+            appender.ReportLevel = reportLevel;
+            appenders.Add(appender);
         }
 
         public void AddMessage(string[] args)
         {
-            
+            foreach (var appender in appenders)
+            {
+                ReportLevel reportLevel = Enum.Parse<ReportLevel>(args[0]);
+                string dateTime = args[1];
+                string message = args[2];
+                appender.Append(dateTime, reportLevel, message);
+            }
         }
 
         public void PrintInfo()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("Logger info");
+            foreach (var appender in appenders)
+            {
+                Console.WriteLine(appender);
+            }
         }
     }
 }

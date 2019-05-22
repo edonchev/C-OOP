@@ -16,10 +16,9 @@ namespace DemoLogger.Core
 
         public void Run()
         {
-        int appendersCount = int.Parse(Console.ReadLine());
+            int appendersCount = int.Parse(Console.ReadLine());
             for (int i = 0; i < appendersCount; i++)
             {
-                
                 string[] appenderArgs = Console.ReadLine().Split(' ');
                 this.commandInterpreter.AddAppender(appenderArgs);
             }
@@ -27,8 +26,12 @@ namespace DemoLogger.Core
             string input;
             while ((input = Console.ReadLine()) != "END")
             {
-                string[] message = input.Split('|');
+                string[] messageArgs = input.Split('|');
+
+                this.commandInterpreter.AddMessage(messageArgs);
             }
+
+            this.commandInterpreter.PrintInfo();
         }
     }
 }

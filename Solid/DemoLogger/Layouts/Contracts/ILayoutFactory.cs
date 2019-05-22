@@ -4,7 +4,8 @@ using System.Text;
 
 namespace DemoLogger.Layouts.Contracts
 {
-    interface ILayoutFactory
+    public interface ILayoutFactory
     {
+        ILayout CreateLayout(string type);
     }
 }

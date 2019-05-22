@@ -7,28 +7,32 @@ using System.IO;
 
 namespace DemoLogger.Appenders
 {
-    public class FileAppender : IAppender
+    public class FileAppender : Appender
     {
         private const string Path = @"..\..\..\log.txt";
-        private readonly ILayout layout;
-        private readonly ILogFile logFile;
 
-        public FileAppender(ILayout layout, ILogFile logFile)
+        public FileAppender(ILayout layout, ILogFile logFile) : base(layout)
         {
-            this.layout = layout;
-            this.logFile = logFile;
+            this.LogFile = logFile;
         }
 
-        public ReportLevel ReportLevel { get; set; }
+        private ILogFile LogFile { get; }
 
-        public void Append(string dateTime, ReportLevel reportLevel, string message)
+        public override void Append(string dateTime, ReportLevel reportLevel, string message)
         {
             if (this.ReportLevel <= reportLevel)
             {
-                string content = string.Format(this.layout.Format, dateTime, reportLevel, message) + Environment.NewLine;
+                string content = string.Format(this.Layout.Format, dateTime, reportLevel, message) + Environment.NewLine;
 
                 File.AppendAllText(Path, content);
+                MessagesAppended++;
+                LogFile.Write(content);
             }
+        }
+
+        public override string ToString()
+        {
+            return $"{base.ToString()}, File size: {LogFile.Size}";
         }
     }
 }
