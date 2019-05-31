@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace Cars
 {
@@ -9,42 +10,89 @@ namespace Cars
     {
         static void Main(string[] args)
         {
-            var cars = ProcessCars("fuel.csv");
-            var manufacturers = ProcessManufacturer("manufacturers.csv");
+            CreateXml();
 
+            QueryXml();
+
+            //var manufacturers = ProcessManufacturer("manufacturers.csv");
+            //var query =
+            //    from car in cars
+            //    group car by car.Manufacturer into carGroup
+            //    select new
+            //    {
+            //        Name = carGroup.Key,
+            //        Max = carGroup.Max(c => c.Combined),
+            //        Min = carGroup.Min(c => c.Combined),
+            //        Avg = carGroup.Average(c => c.Combined)
+            //    } into result
+            //    orderby result.Max descending
+            //    select result;
+
+            //var query2 =
+            //    cars.GroupBy(c => c.Manufacturer)
+            //        .Select(g => 
+            //        {
+            //            var results = g.Aggregate(new CarStatistics(),
+            //                                (acc, c) => acc.Accumulate(c),
+            //                                acc => acc.Compute());
+
+            //            return new
+            //            {
+            //                Name = g.Key,
+            //                Avg = results.Average,
+            //                Min = results.Min,
+            //                Max = results.Max
+            //            };
+            //        })
+            //        .OrderByDescending(r => r.Max);
+
+
+            //foreach (var result in query2)
+            //{
+            //    Console.WriteLine($"{result.Name}");
+            //    Console.WriteLine($"\t Max: {result.Max}");
+            //    Console.WriteLine($"\t Min: {result.Min}");
+            //    Console.WriteLine($"\t Avg:  {result.Avg}");
+            //}
+        }
+
+        private static void QueryXml()
+        {
+            var ns = (XNamespace)"http://pluralsight.com/cars/2016";
+            var ex = (XNamespace)"http://pluralsight.com/cars/2016/ex";
+            var document = XDocument.Load("fuel.xml");
             var query =
-                from manufacturer in manufacturers
-                join car in cars
-                on manufacturer.Name equals car.Manufacturer
-                    into carGroup
-                select new
-                {
-                    Manufacturer = manufacturer,
-                    Cars = carGroup
-                } into result
-                group result by result.Manufacturer.Headquarters;
+                from element in document.Element(ns + "Cars")?.Elements(ex + "Car") 
+                                                        ?? Enumerable.Empty<XElement>()
+                where element.Attribute("Manufacturer")?.Value == "BMW"
+                select element.Attribute("Name").Value;
 
-            var query2 =
-                manufacturers.GroupJoin(cars,
-                                        m => m.Name,
-                                        c => c.Manufacturer,
-                                        (m, c) => new
-                                        {
-                                            Manufacturer = m,
-                                            Cars = c
-                                        })
-                             .GroupBy(m => m.Manufacturer.Headquarters);
-
-
-            foreach (var group in query2)
+            foreach (var name in query)
             {
-                Console.WriteLine($"{group.Key}");
-                foreach (var car in group.SelectMany(g => g.Cars)
-                                         .OrderByDescending(c => c.Combined).Take(3))
-                {
-                    Console.WriteLine($"\t{car.Name} : {car.Combined}");
-                }
+                Console.WriteLine(name);
             }
+
+        }
+
+        private static void CreateXml()
+        {
+            var records = ProcessCars("fuel.csv");
+
+            var ns = (XNamespace)"http://pluralsight.com/cars/2016";
+            var ex = (XNamespace)"http://pluralsight.com/cars/2016/ex";
+            var document = new XDocument();
+            var cars = new XElement(ns + "Cars",
+
+                from record in records
+                select new XElement(ex + "Car",
+                                new XAttribute("Name", record.Name),
+                                new XAttribute("Combined", record.Combined),
+                                new XAttribute("Manufacturer", record.Manufacturer)
+                                ));
+            cars.Add(new XAttribute(XNamespace.Xmlns + "ex", ex));
+
+            document.Add(cars);
+            document.Save("fuel.xml");
         }
 
         private static List<Manufacturer> ProcessManufacturer(string path)
@@ -75,6 +123,36 @@ namespace Cars
 
             return query.ToList();
         }
+    }
+
+    public class CarStatistics
+    {
+        public CarStatistics()
+        {
+            Max = Int32.MinValue;
+            Min = Int32.MaxValue;
+        }
+
+        public CarStatistics Accumulate(Car car)
+        {
+            Count += 1;
+            Total += car.Combined;
+            Max = Math.Max(Max, car.Combined);
+            Min = Math.Min(Min, car.Combined);
+            return this;
+        }
+
+        public CarStatistics Compute()
+        {
+            Average = Total / Count;
+            return this;
+        }
+
+        public int Max { get; set; }
+        public int Min { get; set; }
+        public int Total { get; set; }
+        public int Count { get; set; }
+        public double Average { get; set; }
     }
 
     public static class CarExtensions
