@@ -10,7 +10,7 @@ namespace Problem_2_Book_Shop
         private string author;
         private string title;
         private decimal price;
-        //test comment
+
         public Book(string author, string title, decimal price)
         {
             Author = author;
